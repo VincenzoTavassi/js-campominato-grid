@@ -1,0 +1,23 @@
+body {
+    text-align: center;
+}
+
+#grid {
+    height: 100vh;
+    border: 3px solid gray;
+}
+
+.square {
+    background-color: gold;
+    border: 1px solid black;
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: crosshair;
+}
+
+.square.active {
+    background-color: lightseagreen;
+}
