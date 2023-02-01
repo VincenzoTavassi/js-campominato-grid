@@ -10,25 +10,37 @@
  *                                                   *
  ****************************************************/
 
-
 // DEFINE HTML ELEMENTS 
 const gridEl = document.getElementById('grid');
 const startButtonEl = document.getElementById('start-game');
 const resetButtonEl = document.getElementById('reset-game');
+const difficultyInputEl = document.getElementById('difficulty');
+const selectedSquaresButtonEl = document.getElementById('square-number');
+const selectedSquaresNumberEl = document.getElementById('selected-square-number');
 // const difficultyEl = document.getElementById('difficulty').value;
 // console.log(difficultyEl);
 
 // BUTTON EVENT LISTENERS 
+// difficulty input element 
+difficultyInputEl.addEventListener('click', function () {
+    selectedSquaresButtonEl.disabled = true;
+    difficultyInputEl.disabled = false;
+})
 
 // start game button 
 startButtonEl.addEventListener('click',
     function () {
         const difficultyEl = document.getElementById('difficulty').value;
         let difficultyValue = 1;
-        if (difficultyEl == 'medium') {
-            difficultyValue = 2;
-        } else if (difficultyEl == 'hard') {
-            difficultyValue = 3;
+        console.log(difficultyInputEl.disabled);
+        if (difficultyInputEl.disabled == false) {
+            if (difficultyEl == 'medium') {
+                difficultyValue = 2;
+            } else if (difficultyEl == 'hard') {
+                difficultyValue = 3;
+            }
+        } else {
+            difficultyValue = selectedSquaresButtonEl.value;
         }
         generateGrid(gridEl, difficultyValue);
     });
@@ -36,6 +48,13 @@ startButtonEl.addEventListener('click',
 // reset game button 
 resetButtonEl.addEventListener('click', function () {
     gridEl.innerHTML = '';
+})
+
+// range button
+selectedSquaresButtonEl.addEventListener('input', function () {
+    selectedSquaresButtonEl.disabled = false;
+    difficultyInputEl.disabled = true;
+    selectedSquaresNumberEl.innerHTML = selectedSquaresButtonEl.value;
 })
 
 
@@ -61,7 +80,7 @@ resetButtonEl.addEventListener('click', function () {
 
 function generateGrid(grid, difficulty) {
     // reset grid 
-    grid.innerHTML = ''
+    grid.innerHTML = '';
     // STABILISCO LIVELLO DI DIFFICOLTA'
     let squareClass;
     let gridDimension;
@@ -74,6 +93,9 @@ function generateGrid(grid, difficulty) {
     } else if (difficulty == 3) {
         gridDimension = 49;
         squareClass = 'hard'
+    } else {
+        gridDimension = difficulty;
+        squareClass = 'easy'
     }
 
     // GENERO UN NUMERO DI QUADRATI PARI ALLA DIMENSIONE RICHIESTA 

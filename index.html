@@ -26,7 +26,14 @@
 			<option value="medium">Media</option>
 			<option value="hard">Difficile</option>
 		</select>
-		<button type="button" id="start-game" class="my-5">Comincia!</button>
+		<div>OPPURE</div>
+		<div class="mb-2">
+			<label for="square-number">Seleziona il numero di caselle</label>
+			<input type="range" id="square-number" name="square-number" min="0" max="500"
+				style="vertical-align: middle;">
+			Selezione: <span id="selected-square-number"></span>
+		</div>
+		<button type="button" id="start-game" class="my-2">Comincia!</button>
 		<button type="button" id="reset-game" class="mx-2">Reset</button>
 		<div id="grid" class="row">
 			<!-- START JS GRID  -->

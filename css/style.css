@@ -5,6 +5,7 @@ body {
 #grid {
     height: 80vh;
     border: 3px solid gray;
+    align-content: flex-start;
 }
 
 .square {
