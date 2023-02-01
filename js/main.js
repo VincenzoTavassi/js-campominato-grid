@@ -11,13 +11,18 @@
  ****************************************************/
 
 // DEFINE HTML ELEMENTS 
+// grid 
 const gridEl = document.getElementById('grid');
+// start and reset buttons 
 const startButtonEl = document.getElementById('start-game');
 const resetButtonEl = document.getElementById('reset-game');
+// difficulty select tag
 const difficultyInputEl = document.getElementById('difficulty');
+// number of squares range input tag 
 const selectedSquaresButtonEl = document.getElementById('square-number');
+// selected squares span element - prints the selected squares
 const selectedSquaresNumberEl = document.getElementById('selected-square-number');
-// RADIO BUTTONS 
+// radio buttons
 const difficultyRadio = document.getElementById('selezione-difficolta');
 const generateSquaresRadio = document.getElementById('selezione-libera');
 
@@ -50,13 +55,13 @@ selectedSquaresButtonEl.addEventListener('input', function () {
 // start game button. Comincia il gioco in base alla difficoltà scelta dall'utente OPPURE in base al numero di quadrati selezionati.
 startButtonEl.addEventListener('click',
     function () {
-        const difficultyEl = document.getElementById('difficulty').value;
+        const selectedDifficulty = difficultyInputEl.value;
         let difficultyValue = 1;
         // se la SELCT è attiva seleziono livello di difficoltà in base alla scelta utente 
         if (difficultyInputEl.disabled == false) {
-            if (difficultyEl == 'medium') {
+            if (selectedDifficulty == 'medium') {
                 difficultyValue = 2;
-            } else if (difficultyEl == 'hard') {
+            } else if (selectedDifficulty == 'hard') {
                 difficultyValue = 3;
             }
         } else {
