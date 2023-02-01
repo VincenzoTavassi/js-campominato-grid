@@ -17,12 +17,34 @@ const resetButtonEl = document.getElementById('reset-game');
 const difficultyInputEl = document.getElementById('difficulty');
 const selectedSquaresButtonEl = document.getElementById('square-number');
 const selectedSquaresNumberEl = document.getElementById('selected-square-number');
+// RADIO BUTTONS 
+const difficultyRadio = document.getElementById('selezione-difficolta');
+const generateSquaresRadio = document.getElementById('selezione-libera');
 
-// BUTTON EVENT LISTENERS 
-// Input element difficoltà. Disabilita l'input di range se la difficoltà viene scelta dall'utente tramite SELECT.
-difficultyInputEl.addEventListener('click', function () {
+/*****************************************************
+ *                                                   *
+ *               EVENT LISTENERS                     *
+ *                                                   *
+ ****************************************************/
+
+
+// RADIO BUTTON EVENT LISTENERS 
+// Radio input per la select. Disabilita l'input di range se la difficoltà viene scelta dall'utente tramite SELECT.
+difficultyRadio.addEventListener('click', function () {
     selectedSquaresButtonEl.disabled = true;
     difficultyInputEl.disabled = false;
+})
+
+// Radio per il range input button. Disabilita la SELECT se l'input range viene usato. Mostra selezione al click.
+generateSquaresRadio.addEventListener('click', function () {
+    selectedSquaresButtonEl.disabled = false;
+    difficultyInputEl.disabled = true;
+    selectedSquaresNumberEl.innerHTML = selectedSquaresButtonEl.value;
+})
+
+// Mostra selezione del range input.
+selectedSquaresButtonEl.addEventListener('input', function () {
+    selectedSquaresNumberEl.innerHTML = selectedSquaresButtonEl.value;
 })
 
 // start game button. Comincia il gioco in base alla difficoltà scelta dall'utente OPPURE in base al numero di quadrati selezionati.
@@ -47,12 +69,7 @@ startButtonEl.addEventListener('click',
 // reset game button 
 resetButtonEl.addEventListener('click', function () {
     gridEl.innerHTML = '';
-})
-
-// range input button. Disabilita la SELECT se l'input range viene usato.
-selectedSquaresButtonEl.addEventListener('input', function () {
-    selectedSquaresButtonEl.disabled = false;
-    difficultyInputEl.disabled = true;
+    selectedSquaresButtonEl.value = 100;
     selectedSquaresNumberEl.innerHTML = selectedSquaresButtonEl.value;
 })
 

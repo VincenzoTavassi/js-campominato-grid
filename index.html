@@ -18,23 +18,31 @@
 </head>
 
 <body>
-	<h1>Campo Minato</h1>
+	<h1 class="mb-3">Campo Minato</h1>
 	<div class="container">
-		<label for="difficulty">Seleziona una difficoltà</label>
-		<select name="difficulty" id="difficulty">
-			<option value="easy" selected>Facile</option>
-			<option value="medium">Media</option>
-			<option value="hard">Difficile</option>
-		</select>
-		<div>OPPURE</div>
-		<div class="mb-2">
-			<label for="square-number">Seleziona il numero di caselle</label>
-			<input type="range" id="square-number" name="square-number" min="0" max="500"
-				style="vertical-align: middle;">
-			Selezione: <span id="selected-square-number">&nbsp &nbsp &nbsp</span>
+		<div class="row justify-content-center text-start">
+			<div class="col-6">
+				<input type="radio" class="me-1" name="selezione-difficolta" id="selezione-difficolta" checked>
+				<label class="me-2" for="difficulty">Seleziona una difficoltà</label>
+				<select name="difficulty" id="difficulty">
+					<option value="easy" selected>Facile</option>
+					<option value="medium">Media</option>
+					<option value="hard">Difficile</option>
+				</select>
+				<div class="mb-2">
+					<input type="radio" class="me-1" name="selezione-difficolta" id="selezione-libera">
+					<label class="me-2" for="square-number">Oppure scegli il numero di caselle:</label>
+					<input type="range" id="square-number" name="square-number" min="0" max="500" value="100" step="5"
+						disabled>
+					Selezione: <span id="selected-square-number">&nbsp &nbsp &nbsp</span>
+				</div>
+				<div class="text-center">
+					<button type="button" id="start-game" class="btn btn-primary my-2">Comincia!</button>
+					<button type="button" id="reset-game" class="btn btn-primary mx-2">Reset</button>
+				</div>
+
+			</div>
 		</div>
-		<button type="button" id="start-game" class="my-2">Comincia!</button>
-		<button type="button" id="reset-game" class="mx-2">Reset</button>
 		<div id="grid" class="row">
 			<!-- START JS GRID  -->
 		</div>
