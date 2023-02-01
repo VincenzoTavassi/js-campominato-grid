@@ -20,7 +20,14 @@
 <body>
 	<h1>Campo Minato</h1>
 	<div class="container">
+		<label for="difficulty">Seleziona una difficoltà</label>
+		<select name="difficulty" id="difficulty">
+			<option value="easy" selected>Facile</option>
+			<option value="medium">Media</option>
+			<option value="hard">Difficile</option>
+		</select>
 		<button type="button" id="start-game" class="my-5">Comincia!</button>
+		<button type="button" id="reset-game" class="mx-2">Reset</button>
 		<div id="grid" class="row">
 			<!-- START JS GRID  -->
 		</div>

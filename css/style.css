@@ -3,15 +3,13 @@ body {
 }
 
 #grid {
-    height: 100vh;
+    height: 80vh;
     border: 3px solid gray;
 }
 
 .square {
     background-color: gold;
     border: 1px solid black;
-    width: calc(100% / 10);
-    height: calc(100% / 10);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,4 +18,19 @@ body {
 
 .square.active {
     background-color: lightseagreen;
+}
+
+.square.medium {
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+
+.square.hard {
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+}
+
+.square.easy {
+    width: calc(100% / 10);
+    height: calc(100% / 10);
 }
