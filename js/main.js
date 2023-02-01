@@ -17,22 +17,20 @@ const resetButtonEl = document.getElementById('reset-game');
 const difficultyInputEl = document.getElementById('difficulty');
 const selectedSquaresButtonEl = document.getElementById('square-number');
 const selectedSquaresNumberEl = document.getElementById('selected-square-number');
-// const difficultyEl = document.getElementById('difficulty').value;
-// console.log(difficultyEl);
 
 // BUTTON EVENT LISTENERS 
-// difficulty input element 
+// Input element difficoltà. Disabilita l'input di range se la difficoltà viene scelta dall'utente tramite SELECT.
 difficultyInputEl.addEventListener('click', function () {
     selectedSquaresButtonEl.disabled = true;
     difficultyInputEl.disabled = false;
 })
 
-// start game button 
+// start game button. Comincia il gioco in base alla difficoltà scelta dall'utente OPPURE in base al numero di quadrati selezionati.
 startButtonEl.addEventListener('click',
     function () {
         const difficultyEl = document.getElementById('difficulty').value;
         let difficultyValue = 1;
-        console.log(difficultyInputEl.disabled);
+        // se la SELCT è attiva seleziono livello di difficoltà in base alla scelta utente 
         if (difficultyInputEl.disabled == false) {
             if (difficultyEl == 'medium') {
                 difficultyValue = 2;
@@ -40,6 +38,7 @@ startButtonEl.addEventListener('click',
                 difficultyValue = 3;
             }
         } else {
+            // altrimenti si finisce nell'input range e la griglia genererà un numero equivalente di quadrati all'input utente 
             difficultyValue = selectedSquaresButtonEl.value;
         }
         generateGrid(gridEl, difficultyValue);
@@ -50,7 +49,7 @@ resetButtonEl.addEventListener('click', function () {
     gridEl.innerHTML = '';
 })
 
-// range button
+// range input button. Disabilita la SELECT se l'input range viene usato.
 selectedSquaresButtonEl.addEventListener('input', function () {
     selectedSquaresButtonEl.disabled = false;
     difficultyInputEl.disabled = true;
@@ -65,18 +64,17 @@ selectedSquaresButtonEl.addEventListener('input', function () {
  *                                                   *
  ****************************************************/
 
-// generateGrid(gridEl, 100)
-
-/****************************************************
+/************************************************************************************************
  * 
  * Generates a grid based on the difficulty level 
- * ( 1 = easy, 2 = medium, 3 = hard);
+ * ( 1 = easy, 2 = medium, 3 = hard, any other number = number of squares);
  * 
  * @param {HTMLElement} grid the HTML Element of the grid
- * @param {int} difficulty a number betwen 1, 2 and 3
+ * @param {int} difficulty any number. If 1, 2 o 3 are specified the grid is set 
+ * to work with 100, 81 or 49 squares.
  * 
  * 
-****************************************************/
+************************************************************************************************/
 
 function generateGrid(grid, difficulty) {
     // reset grid 
@@ -94,6 +92,7 @@ function generateGrid(grid, difficulty) {
         gridDimension = 49;
         squareClass = 'hard'
     } else {
+        // se non c'è un livello di difficoltà (1,2 o 3) , la dimensione della grid è pari al parametro inviato 
         gridDimension = difficulty;
         squareClass = 'easy'
     }
